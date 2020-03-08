@@ -3,11 +3,18 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const StyledNavigation = styled.nav`
-  background: red;
+  font-family: "Fira Code", sans-serif;
 `
 
+type NavItems = {
+  [key: string]: {
+    text: string
+    href: string
+  }
+}
+
 export const Navigation: FC<{}> = () => {
-  const navItems = {
+  const navItems: NavItems = {
     about: {
       text: "About me",
       href: "/about-me",
@@ -22,7 +29,9 @@ export const Navigation: FC<{}> = () => {
   return (
     <StyledNavigation>
       {Object.entries(navItems).map(([name, props]) => (
-        <Link to={props.href}>{props.text}</Link>
+        <Link key={name} to={props.href}>
+          {props.text}
+        </Link>
       ))}
     </StyledNavigation>
   )
