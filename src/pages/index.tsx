@@ -1,14 +1,11 @@
-import React, { FC } from "react"
-import { Link } from "gatsby"
+import React, { FC } from "react";
 
-import { Layout } from "../components/Layout/Layout"
-import { Navigation } from "../components/Navigation/Navigation"
+import { Layout } from "../components/Layout/Layout";
 
 const IndexPage: FC<{}> = () => (
   <Layout>
-    <Navigation />
     <h1>Hiho</h1>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
