@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, ReactText } from "react";
 
 import "../../scss/main.scss";
 
@@ -7,7 +7,7 @@ import { MobileNavigation } from "../MobileNavigation/MobileNavigation";
 import { Socials } from "../Socials/Socials";
 
 type Props = {
-  children: ReactElement[];
+  children: ReactElement[] | ReactElement | ReactText;
 };
 
 export const Layout: FC<Props> = ({ children }) => {

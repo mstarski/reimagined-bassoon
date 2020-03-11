@@ -10,7 +10,7 @@ import homeIcon from "../../images/menu-home.svg";
 import aboutMeIcon from "../../images/menu-me.svg";
 import contactIcon from "../../images/menu-envelope.svg";
 
-const StyledMobileNav = styled.div`
+const StyledMobileNav = styled.nav`
   position: fixed;
   bottom: 0;
   left: 0;
