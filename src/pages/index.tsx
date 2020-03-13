@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useRef, SyntheticEvent } from "react";
 import styled from "styled-components";
+import SVG from "react-inlinesvg";
 
 import { bps, colors, fonts } from "../shared/variables";
 import { pxToRem } from "../shared/style-utils";
@@ -38,24 +39,40 @@ const PersonSVG = styled.img`
   height: 200px;
 `;
 
-const BranchIcon = styled.img`
+const BranchIcon = styled(SVG)`
   width: 32px;
   height: 32px;
 `;
 
-const IndexPage: FC<{}> = () => (
-  <Layout>
-    <Section1>
-      <S1Wrapper>
-        <NameHeader>Michał >_ Starski</NameHeader>
-        <PersonSVG src={personSvg} alt="Illustration of a person" />
-        <Button>
-          <span>See my work</span>
-          <BranchIcon src={branchIcon} alt="Branch icon" />
-        </Button>
-      </S1Wrapper>
-    </Section1>
-  </Layout>
-);
+const IndexPage: FC<{}> = () => {
+  const branchSVGRef = useRef(null);
+
+  // Handles branch icon's dynamic fill change on hover
+  function handleButtonHover(event: SyntheticEvent) {
+    if (event.type === "mouseenter") {
+      branchSVGRef.current.lastChild.setAttribute("fill", colors.purple5);
+    } else if (event.type === "mouseleave") {
+      branchSVGRef.current.lastChild.setAttribute("fill", colors.white);
+    }
+  }
+
+  return (
+    <Layout>
+      <Section1>
+        <S1Wrapper>
+          <NameHeader>Michał >_ Starski</NameHeader>
+          <PersonSVG src={personSvg} alt="Illustration of a person" />
+          <Button
+            onMouseEnter={event => handleButtonHover(event)}
+            onMouseLeave={event => handleButtonHover(event)}
+          >
+            <span>See my work</span>
+            <BranchIcon innerRef={branchSVGRef} src={branchIcon} />
+          </Button>
+        </S1Wrapper>
+      </Section1>
+    </Layout>
+  );
+};
 
 export default IndexPage;

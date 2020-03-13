@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactText } from "react";
+import React, { FC, ReactElement, ReactText, ReactHTMLElement } from "react";
 import styled from "styled-components";
 
 import { colors, fonts } from "../../shared/variables";
@@ -18,17 +18,22 @@ const StyledButton = styled.button`
   border-radius: ${pxToRem(13)};
   background: ${colors.purple5};
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
+    color: ${colors.purple5};
+    background: ${colors.white};
     transform: scale(1.1);
   }
 `;
 
 type Props = {
-  children: ReactElement[] | ReactElement | ReactText;
+  children?: ReactElement[] | ReactElement | ReactText;
+  onMouseEnter?: (event: any) => void;
+  onMouseLeave?: (event: any) => void;
+  onClick?: (event: any) => void;
 };
 
-export const Button: FC<Props> = ({ children }) => {
-  return <StyledButton>{children}</StyledButton>;
+export const Button: FC<Props> = ({ children, ...props }) => {
+  return <StyledButton {...props}>{children}</StyledButton>;
 };

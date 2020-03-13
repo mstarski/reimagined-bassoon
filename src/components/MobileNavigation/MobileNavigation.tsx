@@ -65,7 +65,7 @@ export const MobileNavigation: FC<{}> = () => {
   return (
     <StyledMobileNav>
       {Object.entries(navItems).map(([name, props]) => (
-        <MobileLink to={props.href}>
+        <MobileLink key={name} to={props.href}>
           <NavIcon src={props.img} alt={`menu-${name}`} />
           {props.text}
         </MobileLink>
