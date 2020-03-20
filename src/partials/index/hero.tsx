@@ -9,6 +9,7 @@ import { Button } from "../../components/Button/Button";
 
 import personSvg from "../../images/undraw_hacker_mindset_gjwq-no-tree.svg";
 import branchIcon from "../../images/code-branch-solid.svg";
+import { Header } from "../../components/Header/Header";
 
 const HeroSection = styled.section`
   font-family: ${fonts.fira};
@@ -23,14 +24,6 @@ const HeroWrapper = styled.div`
   justify-content: space-around;
   min-height: calc(100vh - ${pxToRem(64)} - 3rem);
   padding-top: 3rem;
-`;
-
-const NameHeader = styled.h1`
-  width: ${pxToRem(270)};
-  margin: 0 auto;
-  font-size: ${pxToRem(48)};
-  line-height: 1.2;
-  color: ${colors.white};
 `;
 
 const PersonSVG = styled.img`
@@ -58,7 +51,7 @@ export const Hero: FC<{}> = () => {
   return (
     <HeroSection>
       <HeroWrapper>
-        <NameHeader>Michał >_ Starski</NameHeader>
+        <Header color={colors.white}>Michał >_ Starski</Header>
         <PersonSVG src={personSvg} alt="Illustration of a person" />
         <Button
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}
