@@ -1,6 +1,7 @@
-import React, { FC, useRef, SyntheticEvent } from "react";
+import React, { FC, useRef, SyntheticEvent, ReactSVG } from "react";
 import styled from "styled-components";
 import SVG from "react-inlinesvg";
+import { scroller } from "react-scroll";
 
 import { bps, colors, fonts } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
@@ -37,15 +38,29 @@ const BranchIcon = styled(SVG)`
 `;
 
 export const Hero: FC<{}> = () => {
-  const branchSVGRef = useRef(null);
+  const branchSVGRef = useRef<SVGElement>(null);
 
   // Handles branch icon's dynamic fill change on hover
   function handleButtonHover(event: SyntheticEvent) {
     if (event.type === "mouseenter") {
-      branchSVGRef.current.lastChild.setAttribute("fill", colors.purple5);
+      (branchSVGRef.current!.lastChild as Element).setAttribute(
+        "fill",
+        colors.purple5
+      );
     } else if (event.type === "mouseleave") {
-      branchSVGRef.current.lastChild.setAttribute("fill", colors.white);
+      (branchSVGRef.current!.lastChild as Element).setAttribute(
+        "fill",
+        colors.white
+      );
     }
+  }
+
+  function scrollDown() {
+    scroller.scrollTo("showcase-header", {
+      duration: 900,
+      smooth: true,
+      offset: -80,
+    });
   }
 
   return (
@@ -56,6 +71,7 @@ export const Hero: FC<{}> = () => {
         <Button
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}
           onMouseLeave={(event: SyntheticEvent) => handleButtonHover(event)}
+          onClick={scrollDown}
         >
           <span>See my work</span>
           <BranchIcon innerRef={branchSVGRef} src={branchIcon} />
