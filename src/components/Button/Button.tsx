@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, ReactText, ReactHTMLElement } from "react";
 import styled from "styled-components";
 
-import { colors, fonts } from "../../shared/variables";
+import { colors, fonts, bps } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
 
 const StyledButton = styled.button`
@@ -24,6 +24,12 @@ const StyledButton = styled.button`
     color: ${colors.purple5};
     background: ${colors.white};
     transform: scale(1.1);
+  }
+
+  @media (min-width: ${bps.md}) {
+    width: ${pxToRem(350)};
+    height: ${pxToRem(70)};
+    font-size: ${pxToRem(36)};
   }
 `;
 

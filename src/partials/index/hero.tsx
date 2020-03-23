@@ -7,10 +7,10 @@ import { bps, colors, fonts } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
 
 import { Button } from "../../components/Button/Button";
+import { Header } from "../../components/Header/Header";
 
 import personSvg from "../../images/undraw_hacker_mindset_gjwq-no-tree.svg";
 import branchIcon from "../../images/code-branch-solid.svg";
-import { Header } from "../../components/Header/Header";
 
 const HeroSection = styled.section`
   font-family: ${fonts.fira};
@@ -19,6 +19,8 @@ const HeroSection = styled.section`
 `;
 
 const HeroWrapper = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -30,11 +32,28 @@ const HeroWrapper = styled.div`
 const PersonSVG = styled.img`
   width: 300px;
   height: 200px;
+
+  @media (min-width: ${bps.sm}) {
+    height: 300px;
+  }
+
+  @media (min-width: ${bps.md}) {
+    order: 2;
+    width: 462px;
+    height: 350px;
+  }
 `;
 
 const BranchIcon = styled(SVG)`
   width: 32px;
   height: 32px;
+`;
+
+const HeroHeader = styled(Header)`
+  @media (min-width: ${bps.md}) {
+    width: 28rem;
+    font-size: 5rem;
+  }
 `;
 
 export const Hero: FC<{}> = () => {
@@ -59,14 +78,14 @@ export const Hero: FC<{}> = () => {
     scroller.scrollTo("showcase-header", {
       duration: 900,
       smooth: true,
-      offset: -80,
+      offset: -75,
     });
   }
 
   return (
     <HeroSection>
       <HeroWrapper>
-        <Header color={colors.white}>Michał >_ Starski</Header>
+        <HeroHeader color={colors.white}>Michał >_ Starski</HeroHeader>
         <PersonSVG src={personSvg} alt="Illustration of a person" />
         <Button
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}

@@ -37,6 +37,7 @@ const StyledNavLink = styled(Link)`
 `;
 
 const Initials = styled(StyledNavLink)`
+  margin-bottom: ${pxToRem(5.5)};
   font-size: 2rem;
 
   &:hover {
