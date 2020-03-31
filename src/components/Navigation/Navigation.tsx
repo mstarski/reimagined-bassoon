@@ -34,6 +34,10 @@ const StyledNavLink = styled(Link)`
     color: ${colors.purple4};
     transform: scale(1.2);
   }
+
+  @media (min-width: ${bps.md}) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Initials = styled(StyledNavLink)`
@@ -42,6 +46,10 @@ const Initials = styled(StyledNavLink)`
 
   &:hover {
     transform: scale(1);
+  }
+
+  @media (min-width: ${bps.md}) {
+    font-size: 2.5rem;
   }
 `;
 
@@ -52,8 +60,12 @@ const NavLeft = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (min-width: ${bps.md}) {
+    flex-basis: 30rem;
+  }
+
   @media (min-width: ${bps.lg}) {
-    flex-basis: ${pxToRem(500)};
+    flex-basis: 35rem;
   }
 `;
 

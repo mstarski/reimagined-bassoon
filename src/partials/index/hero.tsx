@@ -11,6 +11,7 @@ import { Header } from "../../components/Header/Header";
 
 import personSvg from "../../images/undraw_hacker_mindset_gjwq-no-tree.svg";
 import branchIcon from "../../images/code-branch-solid.svg";
+import wave from "../../images/wave.svg";
 
 const HeroSection = styled.section`
   font-family: ${fonts.fira};
@@ -88,6 +89,12 @@ const HeroButton = styled(Button)`
   }
 `;
 
+const Wave = styled.img`
+  position: absolute;
+  bottom: -1rem;
+  width: 101vw;
+`;
+
 export const Hero: FC<{}> = () => {
   const branchSVGRef = useRef<SVGElement>(null);
 
@@ -128,6 +135,7 @@ export const Hero: FC<{}> = () => {
           <BranchIcon innerRef={branchSVGRef} src={branchIcon} />
         </HeroButton>
       </HeroWrapper>
+      <Wave src={wave} alt="A wave" />
     </HeroSection>
   );
 };
