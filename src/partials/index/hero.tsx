@@ -16,6 +16,13 @@ const HeroSection = styled.section`
   font-family: ${fonts.fira};
   font-weight: 700;
   background: ${colors.purple3};
+
+  @media (min-width: ${bps.xl}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 3rem);
+  }
 `;
 
 const HeroWrapper = styled.div`
@@ -27,6 +34,16 @@ const HeroWrapper = styled.div`
   justify-content: space-around;
   min-height: calc(100vh - ${pxToRem(64)} - 3rem);
   padding-top: 3rem;
+
+  @media (min-width: ${bps.xl}) {
+    display: grid;
+    grid-template: repeat(6, 1fr) / repeat(6, 1fr);
+    width: 100%;
+    max-width: ${pxToRem(1440)};
+    height: 530px;
+    min-height: unset;
+    padding: 0 3rem;
+  }
 `;
 
 const PersonSVG = styled.img`
@@ -42,6 +59,11 @@ const PersonSVG = styled.img`
     width: 462px;
     height: 350px;
   }
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 2 / 4 / span 3 / span 2;
+    margin-left: -4.2rem;
+  }
 `;
 
 const BranchIcon = styled(SVG)`
@@ -53,6 +75,16 @@ const HeroHeader = styled(Header)`
   @media (min-width: ${bps.md}) {
     width: 28rem;
     font-size: 5rem;
+  }
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 2;
+  }
+`;
+
+const HeroButton = styled(Button)`
+  @media (min-width: ${bps.xl}) {
+    grid-area: 4;
   }
 `;
 
@@ -87,14 +119,14 @@ export const Hero: FC<{}> = () => {
       <HeroWrapper>
         <HeroHeader color={colors.white}>Michał >_ Starski</HeroHeader>
         <PersonSVG src={personSvg} alt="Illustration of a person" />
-        <Button
+        <HeroButton
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}
           onMouseLeave={(event: SyntheticEvent) => handleButtonHover(event)}
           onClick={scrollDown}
         >
           <span>See my work</span>
           <BranchIcon innerRef={branchSVGRef} src={branchIcon} />
-        </Button>
+        </HeroButton>
       </HeroWrapper>
     </HeroSection>
   );
