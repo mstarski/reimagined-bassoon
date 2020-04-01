@@ -26,6 +26,12 @@ const StyledButton = styled.button`
     transform: scale(1.1);
   }
 
+  @media (min-width: ${bps.sm}) {
+    width: 16rem;
+    height: 3rem;
+    font-size: 1.4rem;
+  }
+
   @media (min-width: ${bps.md}) {
     width: ${pxToRem(350)};
     height: ${pxToRem(70)};

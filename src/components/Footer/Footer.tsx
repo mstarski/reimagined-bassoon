@@ -45,11 +45,15 @@ const FooterLeft = styled(FooterContainer)`
 
 const FooterRight = styled(FooterContainer)`
   flex-flow: column;
-  width: ${pxToRem(360)};
+  width: 28rem;
   height: ${pxToRem(50)};
 
   @media (min-width: ${bps.sm}) and (max-width: ${bps.md}) {
     text-align: right;
+  }
+
+  @media (min-width: ${bps.sm}) {
+    width: 22.5rem;
   }
 `;
 

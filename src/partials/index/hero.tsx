@@ -93,6 +93,7 @@ const Wave = styled.img`
   position: absolute;
   bottom: -1rem;
   width: 101vw;
+  margin-left: -0.2rem;
 `;
 
 export const Hero: FC<{}> = () => {
@@ -117,7 +118,7 @@ export const Hero: FC<{}> = () => {
     scroller.scrollTo("showcase-header", {
       duration: 900,
       smooth: true,
-      offset: -75,
+      offset: -125,
     });
   }
 

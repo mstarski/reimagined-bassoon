@@ -17,6 +17,13 @@ const Grid = styled.div`
   @media (min-width: ${bps.md}) {
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
   }
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 2 / 2 / 4 / 3;
+    justify-self: end;
+    margin-top: 0;
+    height: 100%;
+  }
 `;
 
 const GridItem = styled.div<{ mdGridArea: string }>`
