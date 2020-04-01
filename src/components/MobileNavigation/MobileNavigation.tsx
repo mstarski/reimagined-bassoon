@@ -14,6 +14,7 @@ const StyledMobileNav = styled.nav`
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -65,7 +66,7 @@ export const MobileNavigation: FC<{}> = () => {
   return (
     <StyledMobileNav>
       {Object.entries(navItems).map(([name, props]) => (
-        <MobileLink to={props.href}>
+        <MobileLink key={name} to={props.href}>
           <NavIcon src={props.img} alt={`menu-${name}`} />
           {props.text}
         </MobileLink>
