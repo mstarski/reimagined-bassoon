@@ -44,7 +44,7 @@ const MobileLink = styled(Link)`
   color: ${colors.white};
 `;
 
-export const MobileNavigation: FC<{}> = () => {
+export const MobileNavigation: FC = () => {
   const navItems: NavItems = {
     home: {
       text: "Home",

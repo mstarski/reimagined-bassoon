@@ -2,15 +2,16 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { Element } from "react-scroll";
 
-import { colors, fonts, bps } from "../../shared/variables";
+import { colors, bps } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
 
 import { Header } from "../../components/Header/Header";
 import { ProjectsGrid } from "../../components/ProjectsGrid/ProjectsGrid";
 
 import commitHistory from "../../images/commit-history.svg";
+import { Paragraph } from "../../components/Paragraph/Paragraph";
 
-const ShowcaseWrapper = styled.div`
+const ShowcaseSection = styled.section`
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -62,16 +63,7 @@ const DevActivity = styled.img`
   }
 `;
 
-const Description = styled.p`
-  margin-top: 4rem;
-  font-family: ${fonts.ibm};
-  line-height: 1.3;
-  color: ${colors.white};
-
-  @media (min-width: ${bps.sm}) {
-    font-size: 1.3rem;
-  }
-
+const Description = styled(Paragraph)`
   @media (min-width: ${bps.xl}) {
     grid-area: 2 / 1 / 3 / 1;
     margin-top: 0;
@@ -100,9 +92,9 @@ const HeaderWrapper = styled(Element)`
   }
 `;
 
-export const Showcase: FC<{}> = () => {
+export const Showcase: FC = () => {
   return (
-    <ShowcaseWrapper>
+    <ShowcaseSection>
       <Container>
         <HeaderWrapper name="showcase-header">
           <Header color={colors.white}>My small creations</Header>
@@ -120,6 +112,6 @@ export const Showcase: FC<{}> = () => {
           Curabitur nisi massa, placerat eu interdum ut, bibendum quis dui.
         </Description>
       </Container>
-    </ShowcaseWrapper>
+    </ShowcaseSection>
   );
 };

@@ -22,7 +22,7 @@ const Social = styled.img`
   cursor: pointer;
 `;
 
-export const Socials: FC<{}> = () => {
+export const Socials: FC = () => {
   const tooltips: string[] = ["github", "linkedin"];
 
   return (

@@ -1,12 +1,30 @@
-import React from "react";
+import React, { FC, useContext } from "react";
 import styled from "styled-components";
 
-import { fonts, bps } from "../../shared/variables";
+import { fonts, bps, colors } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
+import { Variant, VariantProperties } from "../../shared/typedefs";
 
 import flowerDev from "../../images/flower-dev.svg";
+import { Store } from "../../store/PageStore";
 
-const FooterWrapper = styled.footer`
+type Props = {
+  variant?: Variant;
+};
+
+const variants: { [name: string]: VariantProperties } = {
+  primary: {
+    background: colors.white,
+    text: colors.purple1,
+  },
+
+  secondary: {
+    background: colors.purple1,
+    text: colors.white,
+  },
+};
+
+const FooterWrapper = styled.footer<{ variant: Variant }>`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -16,8 +34,16 @@ const FooterWrapper = styled.footer`
   justify-content: space-between;
   width: calc(100vw - 2rem);
   height: ${pxToRem(80)};
-  margin-bottom: ${pxToRem(80)};
+  margin-bottom: 4rem;
   padding: 1rem 1rem 0;
+
+  background: ${props =>
+    variants[props.variant]
+      ? variants[props.variant].background
+      : colors.white};
+
+  color: ${props =>
+    variants[props.variant] ? variants[props.variant].text : colors.purple1};
 
   @media (min-width: ${bps.sm}) {
     margin-bottom: 0;
@@ -57,18 +83,22 @@ const FooterRight = styled(FooterContainer)`
   }
 `;
 
-export const Footer = () => (
-  <FooterWrapper>
-    <FooterLeft>
-      <p>© 2020 Michał Starski</p>
-      <FlowerDev src={flowerDev} alt="Developer sitting next to a flower" />
-    </FooterLeft>
-    <FooterRight>
-      <p>
-        Font awesome icons are being used under Creative Commons Attribution 4.0
-        licence
-      </p>
-      <p>Illustrations: undraw.co</p>
-    </FooterRight>
-  </FooterWrapper>
-);
+export const Footer: FC<Props> = ({ variant }) => {
+  const [store] = useContext(Store);
+
+  return (
+    <FooterWrapper variant={store.footerVariant}>
+      <FooterLeft>
+        <p>© 2020 Michał Starski</p>
+        <FlowerDev src={flowerDev} alt="Developer sitting next to a flower" />
+      </FooterLeft>
+      <FooterRight>
+        <p>
+          Font awesome icons are being used under Creative Commons Attribution
+          4.0 licence
+        </p>
+        <p>Illustrations: undraw.co</p>
+      </FooterRight>
+    </FooterWrapper>
+  );
+};

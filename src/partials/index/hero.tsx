@@ -1,10 +1,16 @@
-import React, { FC, useRef, SyntheticEvent, ReactSVG } from "react";
+import React, {
+  FC,
+  useRef,
+  SyntheticEvent,
+  useEffect,
+  useContext,
+} from "react";
 import styled from "styled-components";
 import SVG from "react-inlinesvg";
 import { scroller } from "react-scroll";
 
 import { bps, colors, fonts } from "../../shared/variables";
-import { pxToRem } from "../../shared/style-utils";
+import { pxToRem, stretchHeight } from "../../shared/style-utils";
 
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
@@ -12,6 +18,7 @@ import { Header } from "../../components/Header/Header";
 import personSvg from "../../images/undraw_hacker_mindset_gjwq-no-tree.svg";
 import branchIcon from "../../images/code-branch-solid.svg";
 import wave from "../../images/wave.svg";
+import { Store, ACTIONS } from "../../store/PageStore";
 
 const HeroSection = styled.section`
   font-family: ${fonts.fira};
@@ -27,13 +34,14 @@ const HeroSection = styled.section`
 `;
 
 const HeroWrapper = styled.div`
+  ${stretchHeight};
+
   position: relative;
   z-index: 1;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-around;
-  min-height: calc(100vh - ${pxToRem(64)} - 3rem);
   padding-top: 3rem;
 
   @media (min-width: ${bps.xl}) {
@@ -96,7 +104,18 @@ const Wave = styled.img`
   margin-left: -0.2rem;
 `;
 
-export const Hero: FC<{}> = () => {
+export const Hero: FC = () => {
+  const [store, dispatch] = useContext(Store);
+  // TODO FIX this so it actually changes footer color on page change
+  useEffect(() => {
+    dispatch({
+      type: ACTIONS.SET_NAVBAR_VARIANT,
+      payload: {
+        variant: "primary",
+      },
+    });
+  }, [store.navbarVariant, window.location.href]);
+
   const branchSVGRef = useRef<SVGElement>(null);
 
   // Handles branch icon's dynamic fill change on hover

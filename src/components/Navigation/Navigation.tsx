@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 
 import { colors, fonts, bps } from "../../shared/variables";
-import { pxToRem } from "../../shared/style-utils.ts";
+import { pxToRem } from "../../shared/style-utils";
 import { NavItems } from "../../shared/typedefs";
 
 const StyledNavigation = styled.nav`
@@ -32,11 +32,11 @@ const StyledNavLink = styled(Link)`
 
   &:hover {
     color: ${colors.purple4};
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   @media (min-width: ${bps.md}) {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 `;
 
@@ -69,7 +69,7 @@ const NavLeft = styled.div`
   }
 `;
 
-export const Navigation: FC<{}> = () => {
+export const Navigation: FC = () => {
   const navItems: NavItems = {
     about: {
       text: "About me",

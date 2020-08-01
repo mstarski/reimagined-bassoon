@@ -21,7 +21,7 @@ export const fonts: StringMap = {
 
 // Responsive breakpoints
 export const bps: StringMap = {
-  sm: "567px",
+  sm: "576px",
   md: "768px",
   lg: "992px",
   xl: "1200px",

@@ -5,3 +5,11 @@
  */
 
 // You can delete this file if you're not using it
+
+import React from "react";
+
+import { PageStore } from "./src/store/PageStore";
+
+export const wrapRootElement = ({ element }) => (
+  <PageStore>{element}</PageStore>
+);
