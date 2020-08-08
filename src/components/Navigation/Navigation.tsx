@@ -7,6 +7,9 @@ import { pxToRem } from "../../shared/style-utils";
 import { NavItems } from "../../shared/typedefs";
 
 const StyledNavigation = styled.nav`
+  position: relative;
+  z-index: 2;
+
   display: none;
   height: ${pxToRem(60)};
   padding: 0 1rem;
@@ -36,7 +39,7 @@ const StyledNavLink = styled(Link)`
   }
 
   @media (min-width: ${bps.md}) {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 `;
 

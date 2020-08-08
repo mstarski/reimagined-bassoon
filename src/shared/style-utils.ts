@@ -17,4 +17,30 @@ export function mx(value: string): string {
   `;
 }
 
+export function px(value: string): string {
+  return `
+    padding-left: ${value};
+    padding-right: ${value}; 
+  `;
+}
+
+export function py(value: string): string {
+  return `
+    padding-top: ${value};
+    padding-bottom: ${value}; 
+  `;
+}
+
+export function triangle(width: number, height: number, color: string): string {
+  return `
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 ${pxToRem(width / 2)} ${pxToRem(height)} ${pxToRem(
+    width / 2
+  )};
+    border-color: transparent transparent ${color} transparent;
+  `;
+}
+
 export const stretchHeight = `min-height: calc(100vh - ${pxToRem(64)} - 3rem)`;

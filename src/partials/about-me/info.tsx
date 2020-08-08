@@ -2,9 +2,16 @@ import React, { FC, useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import { colors, bps } from "../../shared/variables";
-import { pxToRem, mx, my, stretchHeight } from "../../shared/style-utils";
+import {
+  pxToRem,
+  mx,
+  my,
+  stretchHeight,
+  triangle,
+  px,
+} from "../../shared/style-utils";
 
-import { Header } from "../../components/Header/Header";
+import { Header as _Header } from "../../components/Header/Header";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
 import { Button } from "../../components/Button/Button";
 
@@ -20,6 +27,25 @@ const InfoSection = styled.section`
   align-items: center;
   padding-top: 5rem;
   background: ${colors.white};
+
+  @media (min-width: ${bps.xl}) {
+    ${px("4rem")};
+
+    display: grid;
+    grid-template: repeat(4, 25%) / repeat(4, 1fr);
+  }
+`;
+
+const Header = styled(_Header)`
+  position: relative;
+  z-index: 2;
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 1 / 1 / 1 / 5;
+    width: 100%;
+    font-size: 5rem;
+    text-align: left;
+  }
 `;
 
 const InfoParagraph = styled(Paragraph)`
@@ -39,6 +65,13 @@ const InfoParagraph = styled(Paragraph)`
   @media (min-width: ${bps.md}) {
     margin-bottom: 5rem;
   }
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 2 / 1 / 3 / 3;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.5rem;
+  }
 `;
 
 const DevActivity = styled.img`
@@ -52,26 +85,37 @@ const DevActivity = styled.img`
   @media (min-width: ${bps.md}) {
     height: 18rem;
   }
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 2 / 3 / 3 / 5;
+    justify-self: center;
+  }
 `;
 
 const CTAButton = styled(Button)`
   position: relative;
   z-index: 2;
+
+  @media (min-width: ${bps.xl}) {
+    grid-area: 3;
+    margin-top: -7rem;
+  }
 `;
 
 const Triangle = styled.div`
+  ${triangle(950, 700, colors.purple1)}
+
   position: absolute;
   bottom: 0;
-  right: -20rem;
+  right: -18rem;
   display: none;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 ${pxToRem(475)} ${pxToRem(700)} ${pxToRem(475)};
-  border-color: transparent transparent ${colors.purple1} transparent;
 
   @media (min-width: ${bps.md}) {
     display: block;
+  }
+
+  @media (min-width: ${bps.xl}) {
+    ${triangle(1500, 1500, colors.purple1)}
   }
 `;
 
