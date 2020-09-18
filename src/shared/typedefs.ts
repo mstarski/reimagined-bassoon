@@ -6,10 +6,6 @@ export type NavItems = {
   };
 };
 
-export type StringMap = {
-  [key: string]: string;
-};
-
 export type Variant = "primary" | "secondary";
 
 export interface VariantProperties {
@@ -34,3 +30,9 @@ export type Action = {
     [key: string]: any;
   };
 };
+
+export interface Technology {
+  name: string;
+  logo: string;
+  description: string;
+}

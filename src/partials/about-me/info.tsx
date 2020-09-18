@@ -2,21 +2,16 @@ import React, { FC, useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import { colors, bps } from "../../shared/variables";
-import {
-  pxToRem,
-  mx,
-  my,
-  stretchHeight,
-  triangle,
-  px,
-} from "../../shared/style-utils";
+import { pxToRem, mx, my, stretchHeight, px } from "../../shared/style-utils";
 
 import { Header as _Header } from "../../components/Header/Header";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
 import { Button } from "../../components/Button/Button";
-
-import DevActivityImg from "../../images/undraw_developer_activity_bv83.svg";
 import { Store, ACTIONS } from "../../store/PageStore";
+import { MOCK_DESCRIPTION } from "../../mocks/constants";
+
+// @ts-ignore
+import DevActivityImg from "../../images/undraw_developer_activity_bv83.svg";
 
 const InfoSection = styled.section`
   ${stretchHeight};
@@ -80,7 +75,11 @@ const DevActivity = styled.img`
 
   ${my("6rem")};
 
-  height: ${pxToRem(200)};
+  height: 10rem;
+
+  @media (min-width: ${bps.sm}) {
+    height: ${pxToRem(200)};
+  }
 
   @media (min-width: ${bps.md}) {
     height: 18rem;
@@ -102,23 +101,6 @@ const CTAButton = styled(Button)`
   }
 `;
 
-const Triangle = styled.div`
-  ${triangle(950, 700, colors.purple1)}
-
-  position: absolute;
-  bottom: 0;
-  right: -18rem;
-  display: none;
-
-  @media (min-width: ${bps.md}) {
-    display: block;
-  }
-
-  @media (min-width: ${bps.xl}) {
-    ${triangle(1500, 1500, colors.purple1)}
-  }
-`;
-
 export const Info: FC = () => {
   const [, dispatch] = useContext(Store);
 
@@ -135,19 +117,9 @@ export const Info: FC = () => {
       <Header color={colors.purple2} align="center">
         About me
       </Header>
-      <InfoParagraph color={colors.purple2}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel
-        dolor placerat nunc euismod rhoncus. Nam feugiat ipsum vel eleifend
-        luctus. Nulla ullamcorper justo facilisis diam porta aliquet. Curabitur
-        nisi massa, placerat eu interdum ut, bibendum quis dui. Lorem ipsum
-        dolor sit amet, consectetur adipiscing elit. Maecenas vel dolor placerat
-        nunc euismod rhoncus. Nam feugiat ipsum vel eleifend luctus. Nulla
-        ullamcorper justo facilisis diam porta aliquet. Curabitur nisi massa,
-        placerat eu interdum ut, bibendum quis dui.
-      </InfoParagraph>
+      <InfoParagraph color={colors.purple2}>{MOCK_DESCRIPTION}</InfoParagraph>
       <CTAButton variant="secondary">Hiho</CTAButton>
       <DevActivity src={DevActivityImg} />
-      <Triangle />
     </InfoSection>
   );
 };

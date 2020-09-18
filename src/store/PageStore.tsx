@@ -1,9 +1,9 @@
 import React, { FC, createContext, useReducer } from "react";
-import { PageState, Action, StringMap } from "../shared/typedefs";
+import { PageState, Action } from "../shared/typedefs";
 
 export const Store: any = createContext([]);
 
-export const ACTIONS: StringMap = {
+export const ACTIONS: Record<string, string> = {
   SET_FOOTER_VARIANT: "SET_FOOTER_VARIANT",
 };
 

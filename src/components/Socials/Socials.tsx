@@ -5,7 +5,10 @@ import ReactTooltip from "react-tooltip";
 import { fonts } from "../../shared/variables";
 import { pxToRem } from "../../shared/style-utils";
 
+// @ts-ignore
 import githubLogo from "../../images/github-square-brands.svg";
+
+// @ts-ignore
 import linkedinLogo from "../../images/linkedin-brands.svg";
 
 const SocialsWrapper = styled.div`
