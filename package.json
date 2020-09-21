@@ -22,6 +22,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-id-swiper": "^4.0.0",
     "react-inlinesvg": "^1.2.0",
     "react-scroll": "^1.7.16",
     "react-tooltip": "^4.1.0",

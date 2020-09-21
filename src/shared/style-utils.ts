@@ -44,3 +44,19 @@ export function triangle(width: number, height: number, color: string): string {
 }
 
 export const stretchHeight = `min-height: calc(100vh - ${pxToRem(64)} - 3rem)`;
+
+export function flexGapVertical(gap: string): string {
+  return `
+  * + * {
+    margin-top: ${gap};   
+ }
+  `;
+}
+
+export function flexGapHorizontal(gap: string): string {
+  return `
+  * + * {
+    margin-left: ${gap};   
+ }
+  `;
+}
