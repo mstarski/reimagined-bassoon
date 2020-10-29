@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Swiper from "react-id-swiper";
 import { Swiper as ISwiper } from "swiper";
 import styled from "styled-components";
@@ -16,7 +16,6 @@ const Container = styled.section``;
 
 const Preview = styled.div`
   ${flexGapVertical("1rem")}
-
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -28,7 +27,8 @@ const Preview = styled.div`
   color: ${colors.white};
 
   .logo {
-    width: 200px;
+    width: ${pxToRem(200)};
+    height: ${pxToRem(200)};
   }
 
   .name {
@@ -38,7 +38,9 @@ const Preview = styled.div`
   }
 
   .description {
+    max-height: ${pxToRem(200)};
     line-height: 1.2;
+    overflow: auto;
   }
 `;
 
@@ -52,27 +54,29 @@ const Slide = styled.div`
   align-items: center;
   justify-content: center;
   height: ${pxToRem(205)};
-  background: ${colors.gray};
+  background: ${colors.white};
+`;
+
+const TechPictureContainer = styled.div`
+  width: ${pxToRem(180)};
+  height: ${pxToRem(180)};
 `;
 
 const TechPicture = styled.img`
-  width: ${pxToRem(250)};
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const Technologies = () => {
-  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [technologies] = useState<Technology[]>(MockTechnologies);
   const [currentTech, setCurrentTech] = useState<Technology>(
     MockTechnologies[0]
   );
 
-  // This will be replaced with an actual API call to the CMS
-  useEffect(() => {
-    setTechnologies(MockTechnologies);
-  }, []);
-
   function handleSlideChange(swiper: ISwiper) {
     const nextElementIndex: number = swiper.activeIndex;
-    setCurrentTech(technologies[nextElementIndex]);
+    setCurrentTech(MockTechnologies[nextElementIndex]);
   }
 
   return (
@@ -93,7 +97,9 @@ export const Technologies = () => {
         >
           {technologies.map((t, i) => (
             <Slide key={i}>
-              <TechPicture src={t.logo} alt={`${t.name} logo`}></TechPicture>
+              <TechPictureContainer>
+                <TechPicture src={t.logo} alt={`${t.name} logo`}></TechPicture>
+              </TechPictureContainer>
             </Slide>
           ))}
         </Swiper>
