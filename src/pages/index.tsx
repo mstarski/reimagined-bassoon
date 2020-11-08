@@ -13,7 +13,7 @@ const IndexPage: FC = () => {
       type: ACTIONS.SET_FOOTER_VARIANT,
       payload: { variant: "primary" },
     });
-  });
+  }, []);
 
   return (
     <Layout>

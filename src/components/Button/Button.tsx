@@ -6,7 +6,7 @@ import { pxToRem } from "../../shared/style-utils";
 import { Variant, ButtonVariantProperties } from "../../shared/typedefs";
 
 type Props = {
-  variant: Variant;
+  variant?: Variant;
   children?: ReactElement[] | ReactElement | ReactText;
   onMouseEnter?: (event: any) => void;
   onMouseLeave?: (event: any) => void;
@@ -33,7 +33,7 @@ const variants: { [name: string]: ButtonVariantProperties } = {
   },
 };
 
-const StyledButton = styled.button<{ variant: Variant }>`
+const StyledButton = styled.button<any>`
   display: flex;
   align-items: center;
   justify-content: space-evenly;

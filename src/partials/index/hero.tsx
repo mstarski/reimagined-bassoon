@@ -14,11 +14,14 @@ import { pxToRem, stretchHeight } from "../../shared/style-utils";
 
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
-
-import personSvg from "../../images/undraw_hacker_mindset_gjwq-no-tree.svg";
-import branchIcon from "../../images/code-branch-solid.svg";
-import wave from "../../images/wave.svg";
 import { Store, ACTIONS } from "../../store/PageStore";
+import { CodePersonSVG } from "../../components/CodePersonSVG/CodePersonSVG";
+
+//@ts-ignore
+import branchIcon from "../../images/code-branch-solid.svg";
+
+//@ts-ignore
+import wave from "../../images/wave.svg";
 
 const HeroSection = styled.section`
   font-family: ${fonts.fira};
@@ -52,25 +55,6 @@ const HeroWrapper = styled.div`
     height: 530px;
     min-height: unset;
     padding: 0 3rem;
-  }
-`;
-
-const PersonSVG = styled.img`
-  width: 300px;
-  height: 200px;
-
-  @media (min-width: ${bps.sm}) {
-    height: 300px;
-  }
-
-  @media (min-width: ${bps.md}) {
-    order: 2;
-    width: 462px;
-    height: 350px;
-  }
-
-  @media (min-width: ${bps.xl}) {
-    grid-area: 2 / 4 / span 3 / span 2;
   }
 `;
 
@@ -144,7 +128,7 @@ export const Hero: FC = () => {
     <HeroSection>
       <HeroWrapper>
         <HeroHeader color={colors.white}>Michał >_ Starski</HeroHeader>
-        <PersonSVG src={personSvg} alt="Illustration of a person" />
+        <CodePersonSVG />
         <HeroButton
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}
           onMouseLeave={(event: SyntheticEvent) => handleButtonHover(event)}
