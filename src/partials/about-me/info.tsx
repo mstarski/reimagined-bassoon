@@ -97,7 +97,6 @@ const CTAButton = styled(Button)`
 
   @media (min-width: ${bps.xl}) {
     grid-area: 3;
-    margin-top: -7rem;
   }
 `;
 

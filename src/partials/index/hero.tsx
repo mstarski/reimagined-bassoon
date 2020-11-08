@@ -71,7 +71,6 @@ const PersonSVG = styled.img`
 
   @media (min-width: ${bps.xl}) {
     grid-area: 2 / 4 / span 3 / span 2;
-    margin-left: -4.2rem;
   }
 `;
 
