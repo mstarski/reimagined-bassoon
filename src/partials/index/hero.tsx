@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  useRef,
-  SyntheticEvent,
-  useEffect,
-  useContext,
-} from "react";
+import React, { FC, useRef, SyntheticEvent } from "react";
 import styled from "styled-components";
 import SVG from "react-inlinesvg";
 import { scroller } from "react-scroll";
@@ -14,7 +8,6 @@ import { pxToRem, stretchHeight } from "../../shared/style-utils";
 
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
-import { Store, ACTIONS } from "../../store/PageStore";
 import { CodePersonSVG } from "../../components/CodePersonSVG/CodePersonSVG";
 
 //@ts-ignore
@@ -75,30 +68,33 @@ const HeroHeader = styled(Header)`
 `;
 
 const HeroButton = styled(Button)`
+  margin: 4rem 0;
+
   @media (min-width: ${bps.xl}) {
     grid-area: 4;
+
+    margin: 0;
   }
 `;
 
 const Wave = styled.img`
   position: absolute;
-  bottom: -1rem;
+  display: none;
+
   width: 101vw;
   margin-left: -0.2rem;
+
+  @media (min-width: ${bps.md}) {
+    display: block;
+    bottom: -7rem;
+  }
+
+  @media (min-width: ${bps.xl}) {
+    bottom: -1rem;
+  }
 `;
 
 export const Hero: FC = () => {
-  const [store, dispatch] = useContext(Store);
-  // TODO FIX this so it actually changes footer color on page change
-  useEffect(() => {
-    dispatch({
-      type: ACTIONS.SET_NAVBAR_VARIANT,
-      payload: {
-        variant: "primary",
-      },
-    });
-  }, [store.navbarVariant, window.location.href]);
-
   const branchSVGRef = useRef<SVGElement>(null);
 
   // Handles branch icon's dynamic fill change on hover

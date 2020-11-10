@@ -36,3 +36,29 @@ export interface Technology {
   logo: string;
   description: string;
 }
+
+export enum Fonts {
+  fira = "fira",
+  ibm = "ibm",
+}
+
+export enum Colors {
+  purple1 = "purple1",
+  purple2 = "purple2",
+  purple3 = "purple3",
+  purple4 = "purple4",
+  purple5 = "purple5",
+  purple6 = "purple6",
+  red = "red",
+  yellow = "yellow",
+  white = "white",
+  black = "black",
+  gray = "gray",
+}
+
+export enum Breakpoints {
+  sm = "sm",
+  md = "md",
+  lg = "lg",
+  xl = "xl",
+}

@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 import { colors, bps } from "../../shared/variables";
@@ -7,7 +7,6 @@ import { pxToRem, mx, my, stretchHeight, px } from "../../shared/style-utils";
 import { Header as _Header } from "../../components/Header/Header";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
 import { Button } from "../../components/Button/Button";
-import { Store, ACTIONS } from "../../store/PageStore";
 import { MOCK_DESCRIPTION } from "../../mocks/constants";
 
 // @ts-ignore
@@ -101,16 +100,6 @@ const CTAButton = styled(Button)`
 `;
 
 export const Info: FC = () => {
-  const [, dispatch] = useContext(Store);
-
-  useEffect(() => {
-    dispatch({
-      type: ACTIONS.SET_FOOTER_VARIANT,
-      payload: { variant: "secondary" },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <InfoSection>
       <Header color={colors.purple2} align="center">
