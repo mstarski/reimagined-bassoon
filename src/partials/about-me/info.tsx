@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { colors, bps } from "../../shared/variables";
-import { pxToRem, mx, my, stretchHeight, px } from "../../shared/style-utils";
+import { pxToRem, mx, my, px, maxContentWidth } from "../../shared/style-utils";
 
 import { Header as _Header } from "../../components/Header/Header";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
@@ -13,7 +13,7 @@ import { MOCK_DESCRIPTION } from "../../mocks/constants";
 import DevActivityImg from "../../images/undraw_developer_activity_bv83.svg";
 
 const InfoSection = styled.section`
-  ${stretchHeight};
+  ${maxContentWidth()}
 
   position: relative;
   display: flex;

@@ -4,7 +4,7 @@ import SVG from "react-inlinesvg";
 import { scroller } from "react-scroll";
 
 import { bps, colors, fonts } from "../../shared/variables";
-import { pxToRem, stretchHeight } from "../../shared/style-utils";
+import { maxContentWidth } from "../../shared/style-utils";
 
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
@@ -17,81 +17,63 @@ import branchIcon from "../../images/code-branch-solid.svg";
 import wave from "../../images/wave.svg";
 
 const HeroSection = styled.section`
+  position: relative;
+  padding-top: 5rem;
+
   font-family: ${fonts.fira};
   font-weight: 700;
   background: ${colors.purple3};
-
-  @media (min-width: ${bps.xl}) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 3rem);
-  }
 `;
 
 const HeroWrapper = styled.div`
-  ${stretchHeight};
+  ${maxContentWidth()}
 
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-around;
-  padding-top: 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  grid-gap: 3rem;
 
   @media (min-width: ${bps.xl}) {
-    display: grid;
-    grid-template: repeat(6, 1fr) / repeat(6, 1fr);
-    width: 100%;
-    max-width: ${pxToRem(1440)};
-    height: 530px;
-    min-height: unset;
-    padding: 0 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: end;
+    grid-gap: 0 3rem;
+    grid-template-rows: auto 60px;
+    padding: 5rem 2rem;
   }
 `;
 
 const BranchIcon = styled(SVG)`
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 `;
 
 const HeroHeader = styled(Header)`
   @media (min-width: ${bps.md}) {
-    width: 28rem;
-    font-size: 5rem;
+    width: 20rem;
   }
 
   @media (min-width: ${bps.xl}) {
-    grid-area: 2;
-  }
-`;
-
-const HeroButton = styled(Button)`
-  margin: 4rem 0;
-
-  @media (min-width: ${bps.xl}) {
-    grid-area: 4;
-
+    width: unset;
+    font-size: 5.5rem;
+    justify-self: start;
     margin: 0;
   }
 `;
 
-const Wave = styled.img`
-  position: absolute;
-  display: none;
-
-  width: 101vw;
-  margin-left: -0.2rem;
-
-  @media (min-width: ${bps.md}) {
-    display: block;
-    bottom: -7rem;
-  }
-
+const HeroButton = styled(Button)`
   @media (min-width: ${bps.xl}) {
-    bottom: -1rem;
+    justify-self: start;
   }
+`;
+
+const Wave = styled.img`
+  margin-top: 2rem;
+  margin-bottom: -1rem;
+  width: 100vw;
 `;
 
 export const Hero: FC = () => {
@@ -113,17 +95,17 @@ export const Hero: FC = () => {
   }
 
   function scrollDown() {
-    scroller.scrollTo("showcase-header", {
-      duration: 900,
-      smooth: true,
-      offset: -125,
-    });
+    // scroller.scrollTo("showcase-header", {
+    //   duration: 900,
+    //   smooth: true,
+    //   offset: 100,
+    // });
   }
 
   return (
     <HeroSection>
       <HeroWrapper>
-        <HeroHeader color={colors.white}>Michał >_ Starski</HeroHeader>
+        <HeroHeader color={colors.white}>Michał &gt;_ Starski</HeroHeader>
         <CodePersonSVG />
         <HeroButton
           onMouseEnter={(event: SyntheticEvent) => handleButtonHover(event)}

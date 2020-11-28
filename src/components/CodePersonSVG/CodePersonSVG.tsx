@@ -5,6 +5,8 @@ import anime from "animejs";
 import { bps } from "../../shared/variables";
 
 const PersonSVG = styled.svg`
+  position: relative;
+  z-index: 2;
   width: 300px;
   height: 200px;
 
@@ -14,13 +16,14 @@ const PersonSVG = styled.svg`
 
   @media (min-width: ${bps.md}) {
     order: 2;
-    width: 462px;
-    height: 350px;
+    width: 362px;
   }
 
-  // For grid reference see - /src/partials/index/hero.tsx
   @media (min-width: ${bps.xl}) {
-    grid-area: 2 / 4 / span 3 / span 2;
+    order: unset;
+    grid-area: 1 / 2 / 3;
+    width: 480px;
+    height: unset;
   }
 `;
 

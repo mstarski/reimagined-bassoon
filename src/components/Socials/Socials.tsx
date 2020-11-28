@@ -15,6 +15,7 @@ const SocialsWrapper = styled.div`
   position: absolute;
   top: ${pxToRem(15)};
   right: 2rem;
+  z-index: 2;
   font-family: ${fonts.fira};
 `;
 
