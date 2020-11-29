@@ -13,14 +13,17 @@ import { MOCK_DESCRIPTION } from "../../mocks/constants";
 import DevActivityImg from "../../images/undraw_developer_activity_bv83.svg";
 
 const InfoSection = styled.section`
+  position: relative;
+  background: ${colors.white};
+`;
+
+const InfoWrapper = styled.div`
   ${maxContentWidth()}
 
-  position: relative;
   display: flex;
   flex-flow: column;
   align-items: center;
   padding-top: 5rem;
-  background: ${colors.white};
 
   @media (min-width: ${bps.xl}) {
     ${px("4rem")};
@@ -102,12 +105,14 @@ const CTAButton = styled(Button)`
 export const Info: FC = () => {
   return (
     <InfoSection>
-      <Header color={colors.purple2} align="center">
-        About me
-      </Header>
-      <InfoParagraph color={colors.purple2}>{MOCK_DESCRIPTION}</InfoParagraph>
-      <CTAButton variant="secondary">Hiho</CTAButton>
-      <DevActivity src={DevActivityImg} />
+      <InfoWrapper>
+        <Header color={colors.purple2} align="center">
+          About me
+        </Header>
+        <InfoParagraph color={colors.purple2}>{MOCK_DESCRIPTION}</InfoParagraph>
+        <CTAButton variant="secondary">Hiho</CTAButton>
+        <DevActivity src={DevActivityImg} />
+      </InfoWrapper>
     </InfoSection>
   );
 };

@@ -7,7 +7,7 @@ import { Technology } from "../../shared/typedefs";
 
 import { colors, fonts, bps } from "../../shared/variables";
 import { SWIPER_CONFIG } from "../../configs/swiper.config";
-import { maxContentWidth, pxToRem } from "../../shared/style-utils";
+import { pxToRem } from "../../shared/style-utils";
 
 import "swiper/swiper.scss";
 
