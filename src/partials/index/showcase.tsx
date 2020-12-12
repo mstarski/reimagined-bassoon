@@ -9,9 +9,10 @@ import { Paragraph } from "../../components/Paragraph/Paragraph";
 
 //@ts-ignore
 import commitHistory from "../../images/commit-history.svg";
+import { GithubProjects } from "../../components/GithubProjects/GithubProjects";
 
 const ShowcaseSection = styled.section`
-  padding: 2rem 1rem;
+  padding: 2rem;
   background: ${colors.purple1};
 `;
 
@@ -59,6 +60,7 @@ export const Showcase: FC = () => {
           luctus. Nulla ullamcorper justo facilisis diam porta aliquet.
           Curabitur nisi massa, placerat eu interdum ut, bibendum quis dui.
         </Description>
+        <GithubProjects></GithubProjects>
         <DevActivity src={commitHistory} />
       </Container>
     </ShowcaseSection>
