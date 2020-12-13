@@ -94,8 +94,10 @@ export const Footer: FC<Props> = ({ variant }) => {
       </FooterLeft>
       <FooterRight>
         <p>
-          Font awesome icons are being used under Creative Commons Attribution
-          4.0 licence
+          Font awesome icons are being used under{" "}
+          <a href="https://fontawesome.com/license">
+            Creative Commons Attribution 4.0 licence
+          </a>
         </p>
         <p>Illustrations: undraw.co</p>
       </FooterRight>
