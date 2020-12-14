@@ -5,7 +5,6 @@ import { useRepos } from "../../hooks/useRepos";
 
 // @ts-ignore
 import fileIcon from "../../images/file-code-regular.svg";
-import { pxToRem } from "../../shared/style-utils";
 import { colors, fonts } from "../../shared/variables";
 
 const Box = styled.div`

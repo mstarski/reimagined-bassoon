@@ -10,8 +10,6 @@ export function useRepos(ids?: number[]) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-  console.log("kek");
-
   useEffect(() => {
     setLoading(true);
 
